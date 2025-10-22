@@ -1,12 +1,12 @@
 const { test, expect } = require('@playwright/test')
 
 test.beforeEach(async ({ request }) => {
-  // reset server state
-  await request.post('http://localhost:3000/api/reset')
+  // reset server state using baseURL
+  await request.post('/api/reset')
 })
 
 test('pet intake flow - add pet appears in list', async ({ page }) => {
-  await page.goto('http://localhost:3000')
+  await page.goto('/')
   // navigate to Add Pet form
   await page.click('button[aria-label="Add a new pet"]')
   await page.waitForSelector('section.form')
